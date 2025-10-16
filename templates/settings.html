@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+<div class="settings-center-wrapper">
+    <div class="settings-card">
+        <div class="page-header">
+            <h1>
+                <i class="fas fa-cog" style="color:var(--primary-blue);"></i>
+                Account Settings
+            </h1>
+            <p class="page-subtitle">Manage your profile and preferences</p>
+        </div>
+        <form method="POST">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ current_user.username }}" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="{{ current_user.email }}" disabled />
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input type="text" id="role" value="{{ current_user.role }}" disabled />
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="upload-btn">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

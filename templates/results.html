@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis Results{% endblock %}
+
+{% block content %}
+<div class="results-center-wrapper">
+  <div class="results-card">
+    <div class="page-header">
+      <h1>Analysis Results</h1>
+      <p class="page-subtitle">Detailed analysis of lung sound recording</p>
+    </div>
+    <div class="result-section">
+      <div class="result-type">
+        <span class="result-type-icon">✅</span>
+        <span class="result-type-title">{{ classification }}</span>
+      </div>
+      <p class="result-type-desc">Detected Respiratory Pattern</p>
+      <hr class="section-divider">
+      <div class="confidence-group">
+        <h3>Model Confidence Level</h3>
+        <div class="confidence-score">{{ confidence_score }}%</div>
+        <p class="confidence-explanation">
+          This indicates how confident the AI model is about this classification.
+        </p>
+      </div>
+      <hr class="section-divider">
+      <div class="clinical-group">
+        <h3><span class="clinical-group-icon">🩺</span> Clinical Interpretation</h3>
+        <strong>{{ clinical_interpretation }}</strong>
+        <div>{{ clinical_detail }}</div>
+      </div>
+      <hr class="section-divider">
+      <div class="notice-group">
+        <h3><span class="notice-group-icon">⚠️</span> Important Medical Notice</h3>
+        <p>This AI-assisted analysis is a diagnostic aid tool only. Always consult with a qualified healthcare professional for proper diagnosis and treatment planning.</p>
+      </div>
+      <hr class="section-divider">
+      <div class="info-group">
+        <h3><span class="info-group-icon">ℹ️</span> Recording Information</h3>
+        <ul class="info-list">
+          <li><strong>Patient Name:</strong> {{ patient_name }}</li>
+          <li><strong>Patient ID:</strong> {{ patient_id }}</li>
+          <li><strong>Age:</strong> {{ age or 'N/A' }} years</li>
+          <li><strong>Gender:</strong> {{ gender or 'N/A' }}</li>
+          <li><strong>Recording Location:</strong> {{ recording_location }}</li>
+          <li><strong>File Name:</strong> {{ filename }}</li>
+          <li><strong>Analysis Date:</strong> {{ analysis_date }}</li>
+          <li><strong>File Size:</strong> {{ file_size }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="action-buttons" style="text-align:center; margin-top:2rem;">
+      <button class="btn-primary" onclick="window.print()">
+        <i class="fas fa-print"></i> Print Report
+      </button>
+      <button class="btn-secondary" onclick="location.href='{{ url_for('dashboard') }}'" style="margin-left:1rem;">
+        <i class="fas fa-home"></i> Back to Dashboard
+      </button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
