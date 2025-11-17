@@ -1,4 +1,39 @@
-flask==3.0.0
+# ==================== FLASK & WEB FRAMEWORK ====================
+Flask==3.0.0
 flask-login==0.6.3
 flask-sqlalchemy==3.1.1
 werkzeug==3.0.1
+# ==============================================================
+
+# ==================== PYTORCH & AST MODEL DEPENDENCIES ====================
+# PyTorch - Main deep learning framework
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Timm - PyTorch Image Models (for Vision Transformer)
+timm>=0.9.0
+
+# NumPy - Required by PyTorch
+numpy>=1.22.0
+
+# Librosa - Audio processing
+librosa==0.10.1
+
+# Audio file support libraries
+soundfile==0.12.1
+audioread==3.0.1
+
+# Additional dependencies for librosa
+numba==0.58.1
+scipy==1.11.4
+# ==========================================================================
+
+# ==================== 2FA & SECURITY ====================
+pyotp>=2.9.0
+qrcode>=7.4.0
+Pillow>=10.0.0
+# ========================================================
+
+# ==================== VISUALIZATION ====================
+matplotlib>=3.7.0
+# ======================================================

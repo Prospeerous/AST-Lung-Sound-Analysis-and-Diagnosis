@@ -9,29 +9,59 @@
         <p class="page-subtitle">Statistical overview of your analyses</p>
     </div>
 
+    <!-- Disease Diagnosis Statistics Cards -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        
+        <!-- Total Analyses -->
         <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
             <h3 style="color: #4A90E2; font-size: 2rem;">{{ stats.total_analyses }}</h3>
             <p>Total Analyses</p>
         </div>
+        
+        <!-- Normal -->
         <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-            <h3 style="color: #90EE90; font-size: 2rem;">{{ stats.normal_count }}</h3>
+            <h3 style="color: #10B981; font-size: 2rem;">{{ stats.normal_count }}</h3>
             <p>Normal</p>
         </div>
+        
+        <!-- Asthma -->
         <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-            <h3 style="color: #FFD700; font-size: 2rem;">{{ stats.crackle_count }}</h3>
-            <p>Crackle</p>
+            <h3 style="color: #F59E0B; font-size: 2rem;">{{ stats.asthma_count }}</h3>
+            <p>Asthma</p>
         </div>
+        
+        <!-- COPD -->
         <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-            <h3 style="color: #FFB6C1; font-size: 2rem;">{{ stats.wheeze_count }}</h3>
-            <p>Wheeze</p>
+            <h3 style="color: #EF4444; font-size: 2rem;">{{ stats.copd_count }}</h3>
+            <p>COPD</p>
         </div>
+        
+        <!-- Pneumonia -->
         <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
-            <h3 style="color: #FF6B6B; font-size: 2rem;">{{ stats.both_count }}</h3>
-            <p>Both</p>
+            <h3 style="color: #8B5CF6; font-size: 2rem;">{{ stats.pneumonia_count }}</h3>
+            <p>Pneumonia</p>
+        </div>
+        
+        <!-- Bronchiectasis -->
+        <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+            <h3 style="color: #EC4899; font-size: 2rem;">{{ stats.bronchiectasis_count }}</h3>
+            <p>Bronchiectasis</p>
+        </div>
+        
+        <!-- URTI -->
+        <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+            <h3 style="color: #06B6D4; font-size: 2rem;">{{ stats.urti_count }}</h3>
+            <p>URTI</p>
+        </div>
+        
+        <!-- Bronchitis (FIXED: Changed from Bronchiolitis) -->
+        <div style="background: white; padding: 1.5rem; border-radius: 12px; text-align: center;">
+            <h3 style="color: #F97316; font-size: 2rem;">{{ stats.bronchitis_count }}</h3>
+            <p>Bronchitis</p>
         </div>
     </div>
 
+    <!-- All Analyses List -->
     <div class="recent-section">
         <h2>All Analyses</h2>
         <ul class="upload-list">
@@ -44,7 +74,10 @@
                         <p class="file-meta">{{ analysis.analysis_date.strftime('%b %d, %Y') }}</p>
                     </div>
                 </div>
-                <span class="status-badge status-complete">{{ analysis.classification }}</span>
+                <span class="status-badge" 
+                      style="background: {% if analysis.disease_diagnosis == 'Normal' %}linear-gradient(135deg, #10B981 0%, #059669 100%){% elif analysis.disease_diagnosis == 'Asthma' %}linear-gradient(135deg, #F59E0B 0%, #D97706 100%){% elif analysis.disease_diagnosis == 'COPD' %}linear-gradient(135deg, #EF4444 0%, #DC2626 100%){% elif analysis.disease_diagnosis == 'Pneumonia' %}linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%){% elif analysis.disease_diagnosis == 'Bronchitis' %}linear-gradient(135deg, #06B6D4 0%, #0891B2 100%){% else %}linear-gradient(135deg, #F97316 0%, #EA580C 100%){% endif %}; color: white;">
+                    {{ analysis.disease_diagnosis }}
+                </span>
             </li>
             {% endfor %}
         </ul>
