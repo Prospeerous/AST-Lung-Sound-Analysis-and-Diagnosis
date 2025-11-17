@@ -1,6 +1,15 @@
 # Hybrid Lung Sound Analysis and Diagnosis System
 
+![Python Version](https://img.shields.io/badge/python-3.9%2B-blue)
+![PyTorch](https://img.shields.io/badge/pytorch-2.0%2B-red)
+![Flask](https://img.shields.io/badge/flask-3.0.0-green)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Maintenance](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+
 A sophisticated deep learning-powered web application for automated respiratory disease diagnosis from lung sound recordings. This system combines unsupervised and supervised learning in a hybrid architecture to provide accurate, reliable clinical assessments.
+
+![Demo Screenshot](static/demo_screenshot.png)
+*Note: Add your actual screenshot to the static folder*
 
 ## Table of Contents
 - [Overview](#overview)
@@ -375,49 +384,34 @@ AST-Lung-Sound-Analysis-and-Diagnosis/
 - **Size Limits**: Maximum upload size of 50MB
 - **Required Fields**: Server-side validation of required form data
 
+## Documentation
+
+Comprehensive documentation is available:
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Contribution guidelines and development setup
+- **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** - Community guidelines and standards
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history and release notes
+- **[SECURITY.md](SECURITY.md)** - Security policy and vulnerability reporting
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** - Detailed system architecture
+- **[docs/API.md](docs/API.md)** - API routes and endpoints reference
+- **[docs/SCREENSHOTS_GUIDE.md](docs/SCREENSHOTS_GUIDE.md)** - Guide for adding screenshots
+
 ## Contributing
 
-Contributions to improve the system are welcome! Here's how you can help:
+Contributions to improve the system are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
-### Reporting Issues
-1. Check if the issue already exists in GitHub Issues
-2. Provide detailed description including:
-   - Steps to reproduce
-   - Expected vs. actual behavior
-   - Environment details (OS, Python version)
-   - Error messages or logs
-
-### Suggesting Features
-1. Open a GitHub Issue with the `enhancement` label
-2. Describe the feature and its benefits
-3. Provide use cases and examples
-
-### Code Contributions
+**Quick Start:**
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/your-feature`)
-3. Make your changes following the existing code style
-4. Test thoroughly (ensure existing functionality isn't broken)
-5. Commit with descriptive messages
-6. Push to your fork
-7. Open a Pull Request with detailed description
+3. Make your changes following [PEP 8](https://www.python.org/dev/peps/pep-0008/)
+4. Test thoroughly
+5. Submit a Pull Request
 
-### Code Style Guidelines
-- Follow PEP 8 for Python code
-- Use meaningful variable and function names
-- Add comments for complex logic
-- Keep functions focused and modular
-- Update documentation for new features
+For bug reports and feature requests, please use our [issue templates](.github/ISSUE_TEMPLATE/).
 
 ## License
 
-This project is licensed under the **MIT License**.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files, to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, subject to the following conditions:
-
-- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
-
-See the LICENSE file for full details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for full details.
 
 ## Contact
 
