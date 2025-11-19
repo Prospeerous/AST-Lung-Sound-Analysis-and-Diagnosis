@@ -50,6 +50,30 @@
       </div>
       <hr class="section-divider">
 
+      <!-- Audio Playback Section -->
+      <div class="audio-playback-group">
+        <h3><span class="audio-playback-icon">🔊</span> Audio Playback</h3>
+        <p style="color: #555; margin-bottom: 1rem;">Listen to the recorded respiratory sounds</p>
+        {% if audio_file_path %}
+        <div class="audio-player-container">
+          <audio id="lungSoundPlayer" controls controlsList="nodownload" preload="metadata">
+            <source src="{{ url_for('static', filename=audio_file_path|normalize_static_path) }}" type="audio/wav">
+            <source src="{{ url_for('static', filename=audio_file_path|normalize_static_path) }}" type="audio/mpeg">
+            <source src="{{ url_for('static', filename=audio_file_path|normalize_static_path) }}" type="audio/flac">
+            Your browser does not support the audio element.
+          </audio>
+          <div class="audio-controls-info">
+            <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">
+              <i class="fas fa-info-circle"></i> Use the controls to play, pause, and adjust volume
+            </p>
+          </div>
+        </div>
+        {% else %}
+        <p style="text-align: center; color: #666;">Audio file not available.</p>
+        {% endif %}
+      </div>
+      <hr class="section-divider">
+
       <!-- Visualizations Section -->
       <div class="visualization-group">
         <h3><span class="visualization-group-icon">📊</span> Audio Visualizations</h3>
@@ -124,10 +148,57 @@
 </div>
 
 <style>
+/* Audio Player Styling */
+.audio-playback-group {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #4A90E2;
+}
+
+.audio-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#lungSoundPlayer {
+  width: 100%;
+  max-width: 600px;
+  height: 54px;
+  outline: none;
+}
+
+#lungSoundPlayer::-webkit-media-controls-panel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+#lungSoundPlayer::-webkit-media-controls-play-button,
+#lungSoundPlayer::-webkit-media-controls-current-time-display,
+#lungSoundPlayer::-webkit-media-controls-time-remaining-display,
+#lungSoundPlayer::-webkit-media-controls-timeline,
+#lungSoundPlayer::-webkit-media-controls-volume-slider {
+  filter: brightness(1.2);
+}
+
+.audio-controls-info {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
 @media print {
   .print-footer {
     display: block !important;
     page-break-inside: avoid !important;
+  }
+
+  .audio-playback-group {
+    display: none !important;
   }
 }
 </style>
