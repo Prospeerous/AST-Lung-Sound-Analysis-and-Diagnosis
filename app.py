@@ -515,6 +515,22 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
+# Custom template filter to normalize file paths for static files
+@app.template_filter('normalize_static_path')
+def normalize_static_path(file_path):
+    """Convert database file paths to Flask static-compatible paths.
+
+    Handles both old format (static/uploads\file.wav) and new format (uploads/file.wav)
+    Returns: Path relative to static folder with forward slashes (uploads/file.wav)
+    """
+    if not file_path:
+        return ""
+    # Remove 'static/' or 'static\' prefix if present
+    normalized = file_path.replace("static/", "").replace("static\\", "")
+    # Convert all backslashes to forward slashes
+    normalized = normalized.replace("\\", "/")
+    return normalized
+
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -891,10 +907,13 @@ def upload_audio():
             filename = secure_filename(file.filename)
             unique_filename = f"{current_user.id}_{patient_id}_{datetime.now().timestamp()}_{filename}"
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], unique_filename)
+            # Store relative path from static folder for Flask url_for compatibility
+            relative_path = filepath.replace("static/", "").replace("static\\", "").replace("\\", "/")
 
             os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
             file.save(filepath)
             print(f"[OK] Audio file saved for hybrid analysis: {filepath}")
+            print(f"[OK] Relative path for static access: {relative_path}")
         except Exception as e:
             return (
                 jsonify({"success": False, "error": f"File save error: {str(e)}"}),
@@ -914,7 +933,7 @@ def upload_audio():
 
             audio_file = AudioFile(
                 filename=filename,
-                file_path=filepath,
+                file_path=relative_path,
                 recording_location=recording_location,
                 recording_datetime=recording_dt_parsed,
                 visit_type=visit_type if visit_type else None,
@@ -1076,6 +1095,7 @@ def view_results(analysis_id):
         "age": patient.age,
         "gender": patient.gender,
         "filename": analysis.audio_file.filename,
+        "audio_file_path": analysis.audio_file.file_path,
         "recording_location": analysis.audio_file.recording_location,
         "analysis_date": analysis.analysis_date.strftime("%B %d, %Y at %I:%M %p"),
         "file_size": "3.2 MB",
