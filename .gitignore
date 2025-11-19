@@ -1,0 +1,78 @@
+# ==================== Python ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+venv/
+env/
+ENV/
+.venv
+
+# ==================== Flask ====================
+instance/
+.webassets-cache
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# ==================== IDE ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==================== OS ====================
+.DS_Store
+Thumbs.db
+nul
+
+# ==================== Uploads ====================
+static/uploads/*
+!static/uploads/.gitkeep
+
+# ==================== Environment Variables ====================
+.env
+.flaskenv
+
+# ==================== Model Files (Large) ====================
+*.pth
+*.pt
+*.h5
+*.pkl
+
+# ==================== Logs ====================
+*.log
+
+# ==================== Output Files (Training Data) ====================
+# Large numpy/compressed files
+outputs/augmented_dataset.npz
+outputs/dataset_splits.npz
+outputs/preprocessed_data.npz
+outputs/*.npz
+
+# Additional large training files
+outputs/*/X_mel_spectrograms.npy
+outputs/*/dataset_metadata.csv
+outputs/*/preprocessing_summary.csv
+outputs/*/*.log
+
+# Exclude entire model directory (contains large .h5 model files)
+outputs/cnn_lstm_model/
+
+# Keep configuration files (small and important)
+!outputs/cnn_lstm_model/cell1_configuration.json
+!outputs/cnn_lstm_model/class_mapping_and_weights.json
+!outputs/cnn_lstm_model/normalization_params.json
+!outputs/cnn_lstm_model/y_class_codes.npy
+
+# Visualizations (generated dynamically)
+static/visualizations/*.png
+!static/visualizations/.gitkeep
+
+# Claude files
+.claude/
