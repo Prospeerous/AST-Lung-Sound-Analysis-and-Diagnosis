@@ -1,4 +1,4 @@
-# AST Lung Sound Analysis and Diagnosis
+# Hybrid Lung Sound Analysis and Diagnosis
 A hybrid deep learning system for automated respiratory disease diagnosis from lung sound recordings. The project implements a unique architecture combining unsupervised and supervised learning to classify audio into 5 disease categories and 4 sound types.
 
 ## Project Overview
